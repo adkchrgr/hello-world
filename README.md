@@ -17,6 +17,7 @@ For code, see my other repositories:
 | [Friendsapp](https://github.com/adkchrgr/Friendsapp) | First Ruby on Rails app (tutorial plus my own fixes) | Rails |
 | [sort_screenshots_MacOS](https://github.com/adkchrgr/sort_screenshots_MacOS) | Auto-organizes macOS screenshots | Python |
 | [it-cert-automation-practice](https://github.com/adkchrgr/it-cert-automation-practice) | Google IT Automation with Python coursework | Python |
+| [My-Claude-Architect-Examples](https://github.com/adkchrgr/My-Claude-Architect-Examples) | Runnable examples from the Claude Certified Architect track | Python |
 
 ---
 
@@ -84,3 +85,30 @@ pantry inventory app that uses AI to scan receipts, break a purchase into
 individual items and quantities, and store them in a database. It might also use
 current inventory to suggest meals. It would need to remove items as they are
 used or expire, and alert when stock runs low.
+
+## 28 August 2026
+
+New track: I'm working through the **Claude Certified Architect** material and
+keeping every exercise as a small, runnable example in
+[My-Claude-Architect-Examples](https://github.com/adkchrgr/My-Claude-Architect-Examples).
+The goal is to actually understand how an agent is wired, not just call an API.
+
+What I've built so far:
+
+- **Tool-use loop from first principles.** A manual Messages API loop that reads
+  `stop_reason` on every turn to decide whether to run a tool and keep going
+  (`tool_use`) or stop and print the answer (`end_turn`). Seeing the full
+  `messages` list get resent each turn made the stateless design click.
+- **Loop control.** A focused example on ending a run correctly instead of
+  letting it spin — checking stop conditions and turn limits rather than
+  trusting the model to stop on its own.
+- **Decision-making patterns.** Prompts and scaffolding for getting the model to
+  choose between options in a structured, checkable way.
+- **Multi-agent coordination.** A basic coordinator that hands narrow,
+  well-scoped subtasks to worker agents and assembles the results — plus notes
+  on why breaking a task down small matters more than I expected.
+
+Running everything on Haiku to keep the API bill near zero while I iterate.
+
+Next: turning these pieces into one end-to-end agent and studying where the
+handoffs get fragile.
